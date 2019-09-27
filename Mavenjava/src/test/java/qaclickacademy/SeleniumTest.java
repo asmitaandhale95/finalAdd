@@ -39,7 +39,10 @@ public class SeleniumTest
 		
 		//Click on login button
 		driver.findElement(By.id("login.login_btn_label")).click();
+		System.out.println("Enter username and password");
+		System.out.println("Database is selected");
 		System.out.println("Login is successful");
+		
   }
 	@BeforeClass
 	public void beforeClass()
