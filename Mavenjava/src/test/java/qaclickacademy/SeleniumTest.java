@@ -39,6 +39,7 @@ public class SeleniumTest
 		
 		//Click on login button
 		driver.findElement(By.id("login.login_btn_label")).click();
+		System.out.println("Login is successful");
   }
 	@BeforeClass
 	public void beforeClass()
