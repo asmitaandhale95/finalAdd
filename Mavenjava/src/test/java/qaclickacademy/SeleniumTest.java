@@ -19,7 +19,6 @@ public class SeleniumTest
 	@Test
   public void openMyBlog()
   {
-
 		driver.manage().timeouts().implicitlyWait(90,TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		String baseUrl = "http://192.168.1.12/Aras11_SP8_PCCS/Client/X-salt=std_11.0.0.6493-X/scripts/Innovator.aspx";
@@ -39,10 +38,6 @@ public class SeleniumTest
 		
 		//Click on login button
 		driver.findElement(By.id("login.login_btn_label")).click();
-		System.out.println("Enter username and password");
-		System.out.println("Database is selected");
-		System.out.println("Login is successful");
-		
   }
 	@BeforeClass
 	public void beforeClass()
