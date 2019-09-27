@@ -38,6 +38,9 @@ public class SeleniumTest
 		
 		//Click on login button
 		driver.findElement(By.id("login.login_btn_label")).click();
+		System.out.println("Username and password is enterd");
+		System.out.println("Database dev is selected and click on login button");
+		
   }
 	@BeforeClass
 	public void beforeClass()
@@ -46,6 +49,7 @@ public class SeleniumTest
 		System.out.println(path);
 		System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
 		driver = new ChromeDriver();
+		System.out.println("Chrome Brawser window is opened");
 		
 	}
 	@AfterClass
