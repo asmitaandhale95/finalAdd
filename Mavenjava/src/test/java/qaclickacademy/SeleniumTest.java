@@ -46,6 +46,7 @@ public class SeleniumTest
 	public void beforeClass()
 	{
 		ChromeOptions chromeOptions= new ChromeOptions();
+		//Set the path of chromt.exe 
 		chromeOptions.setBinary("C:\\Users\\user1\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
 		String path = System.getProperty("user.dir");
 		System.out.println(path);
