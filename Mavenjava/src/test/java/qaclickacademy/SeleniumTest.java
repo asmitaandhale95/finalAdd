@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -42,16 +43,20 @@ public class SeleniumTest
 		
 		
   }
+	@SuppressWarnings("deprecation")
 	@BeforeClass
 	public void beforeClass()
 	{
 		ChromeOptions chromeOptions= new ChromeOptions();
 		//Set the path of chromt.exe 
 		chromeOptions.setBinary("C:\\Users\\user1\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+		
 		String path = System.getProperty("user.dir");
 		System.out.println(path);
 		System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(capabilities);
 		System.out.println("Chrome Brawser window is opened");
 		
 	}
