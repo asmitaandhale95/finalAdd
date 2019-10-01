@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -46,7 +48,7 @@ public class SeleniumTest
 		System.out.println("Login done");
   }
 	
-	@BeforeClass
+	@Before
 	public void beforeClass()
 	{
 		ChromeOptions chromeOptions= new ChromeOptions();
@@ -61,7 +63,7 @@ public class SeleniumTest
 		driver = new ChromeDriver(chromeOptions);
 		System.out.println("Chrome Brawser window is opened");
 	}
-	@AfterClass
+	@After
 	public void afterClass()
 	{
 		System.out.println("After Class method Do u want to quit the brawser");

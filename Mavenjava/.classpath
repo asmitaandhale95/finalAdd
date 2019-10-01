@@ -26,5 +26,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="lib" path="E:/Asmita/Selenium/ProjectLibrary/selenium-3.9.1-nodeps - Copy.jar"/>
+	<classpathentry kind="lib" path="E:/Asmita/Selenium/ProjectLibrary/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/JunitJArFile/junit-4.13-beta-3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
