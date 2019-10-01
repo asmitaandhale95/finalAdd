@@ -43,22 +43,21 @@ public class SeleniumTest
 		
 		
   }
-	@SuppressWarnings("deprecation")
+	
 	@BeforeClass
 	public void beforeClass()
 	{
 		ChromeOptions chromeOptions= new ChromeOptions();
 		//Set the path of chromt.exe 
 		chromeOptions.setBinary("C:\\Users\\user1\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
+		chromeOptions.addArguments("--disable-features=VizDisplayCompositor");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-		
 		String path = System.getProperty("user.dir");
 		System.out.println(path);
 		System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
-		driver = new ChromeDriver(capabilities);
+		driver = new ChromeDriver(chromeOptions);
 		System.out.println("Chrome Brawser window is opened");
-		
 	}
 	@AfterClass
 	public void afterClass()
