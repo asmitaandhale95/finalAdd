@@ -25,14 +25,17 @@ public class SeleniumTest
 		driver.manage().window().maximize();
 		String baseUrl = "http://192.168.1.12/Aras11_SP8_PCCS/Client/X-salt=std_11.0.0.6493-X/scripts/Innovator.aspx";
 		driver.get(baseUrl);
+		System.out.println("Aras URL is hit");
 		Date d =new Date();
 		
 		driver.switchTo().frame("main");
 		//Enter username
 		driver.findElement(By.id("username")).sendKeys("Flx_QDM_Admin1");
+		System.out.println("Username is entered");
 		
 		//Enter Password
 		driver.findElement(By.id("password")).sendKeys("123");
+		System.out.println("Password is entered");
 		
 		//Select the database
 		Select selectdb = new Select(driver.findElement(By.id("database_select")));
@@ -40,8 +43,7 @@ public class SeleniumTest
 		
 		//Click on login button
 		driver.findElement(By.id("login.login_btn_label")).click();
-		
-		
+		System.out.println("Login done");
   }
 	
 	@BeforeClass
@@ -62,7 +64,7 @@ public class SeleniumTest
 	@AfterClass
 	public void afterClass()
 	{
-		driver.quit();
+		System.out.println("After Class method Do u want to quit the brawser");
 	}
 	
 
