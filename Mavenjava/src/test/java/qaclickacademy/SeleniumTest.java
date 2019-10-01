@@ -18,9 +18,20 @@ import org.testng.annotations.Test;
 public class SeleniumTest 
 {
 	public WebDriver driver;
-	@Test
-  public void openMyBlog()
-  {
+		@Test
+		public void openMyBlog()
+		{
+		ChromeOptions chromeOptions= new ChromeOptions();
+		//Set the path of chromt.exe 
+		chromeOptions.setBinary("C:\\Users\\user1\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
+		chromeOptions.addArguments("--disable-features=VizDisplayCompositor");
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+		String path = System.getProperty("user.dir");
+		System.out.println(path);
+		System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
+		driver = new ChromeDriver(chromeOptions);
+		System.out.println("Chrome Brawser window is opened");
 		driver.manage().timeouts().implicitlyWait(90,TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		String baseUrl = "http://192.168.1.12/Aras11_SP8_PCCS/Client/X-salt=std_11.0.0.6493-X/scripts/Innovator.aspx";
@@ -46,26 +57,6 @@ public class SeleniumTest
 		System.out.println("Login done");
   }
 	
-	@BeforeClass
-	public void beforeClass()
-	{
-		ChromeOptions chromeOptions= new ChromeOptions();
-		//Set the path of chromt.exe 
-		chromeOptions.setBinary("C:\\Users\\user1\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
-		chromeOptions.addArguments("--disable-features=VizDisplayCompositor");
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-		String path = System.getProperty("user.dir");
-		System.out.println(path);
-		System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
-		driver = new ChromeDriver(chromeOptions);
-		System.out.println("Chrome Brawser window is opened");
-	}
-	@AfterClass
-	public void afterClass()
-	{
-		System.out.println("After Class method Do u want to quit the ");
-	}
 	
 
 }
