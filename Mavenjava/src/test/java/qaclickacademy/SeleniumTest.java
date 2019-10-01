@@ -41,7 +41,7 @@ public class SeleniumTest
 		
 		driver.switchTo().frame("main");
 		//Enter username
-		//driver.findElement(By.id("username")).sendKeys("Flx_QDM_Admin1");
+		driver.findElement(By.id("username")).sendKeys("Flx_QDM_Admin1");
 		System.out.println("Username is entered");
 		
 		//Enter Password
