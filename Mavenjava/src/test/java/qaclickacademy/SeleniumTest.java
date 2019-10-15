@@ -55,6 +55,8 @@ public class SeleniumTest
 		//Click on login button
 		driver.findElement(By.id("login.login_btn_label")).click();
 		System.out.println("Login done");
+		driver.close();
+		
   }
 	
 	
