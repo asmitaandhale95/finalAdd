@@ -53,7 +53,7 @@ public class SeleniumTest
 		System.out.println("Username is entered");
 		
 		//Enter Password
-		driver.findElement(By.id("password")).sendKeys("123");
+		//driver.findElement(By.id("password")).sendKeys("123");
 		System.out.println("Password is entered");
 		
 		//Select the database
