@@ -7,11 +7,11 @@ public class RESTAPITest
 	@Test
 	public void postJira()
 	{
-		System.out.println("PostJira in RESTAPI Test");
+		System.out.println("First Test from Second Class is executed successfully");
 	}
 	@Test
 	public void deleteTwitter()
 	{
-		System.out.println("RESTAPI in Appium Test");
+		System.out.println("Second Test from Second Class is executed successfully");
 	}
 }

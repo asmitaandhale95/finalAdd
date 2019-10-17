@@ -7,11 +7,11 @@ public class AppiumTest
 	@Test
 	public void NativeAppAndroid()
 	{
-		System.out.println("Android app in Appium Test");
+		System.out.println("First Test from First class is executed successfully");
 	}
 	@Test
 	public void IOSApps()
 	{
-		System.out.println("IOS App in Appium Test");
+		System.out.println("Second Test from First class is executed successfully");
 	}
 }

@@ -5,25 +5,33 @@ import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class SeleniumTest 
 {
 	public WebDriver driver;
-		@Test
+		@BeforeTest
 		public void openMyBlog()
 		{
 		ChromeOptions chromeOptions= new ChromeOptions();
 		//Set the path of chromt.exe 
 		chromeOptions.setBinary("C:\\Users\\user1\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
+		//Find out the location of chrome.exe :-
 		chromeOptions.addArguments("--disable-features=VizDisplayCompositor");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
@@ -31,7 +39,7 @@ public class SeleniumTest
 		System.out.println(path);
 		System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
 		driver = new ChromeDriver(chromeOptions);
-		System.out.println("Chrome Brawser window is opened");
+		System.out.println("Chrome Browser window is opened");
 		driver.manage().timeouts().implicitlyWait(90,TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		String baseUrl = "http://192.168.1.12/Aras11_SP8_PCCS/Client/X-salt=std_11.0.0.6493-X/scripts/Innovator.aspx";
@@ -54,10 +62,38 @@ public class SeleniumTest
 		
 		//Click on login button
 		driver.findElement(By.id("login.login_btn_label")).click();
-		System.out.println("Login done");
-		driver.close();
-		
+		System.out.println("Login is Successful");
   }
+		@Test
+		public void CreateNewPO() throws Exception
+		{
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			//driver.manage().timeouts().implicitlyWait(40,TimeUnit.SECONDS);
+			WebElement expanded = driver.findElement(By.id("main_frameset"));
+			driver.switchTo().frame("main");
+			WebElement expandPoReview = driver.findElement(By.xpath("//span[@class='dijitTreeLabel' and text() ='PCC Dynamic PO Review']//parent::span//parent::div//child::span[1]"));
+			expandPoReview.click();
+			expandPoReview = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='dijitTreeLabel' and text()='PCC Dynamic PO Review']//parent::span//parent::div//child::span[1]")));
+			Thread.sleep(3000);
+			//Click on the PO Review label
+			WebElement poReview = driver.findElement(By.xpath("//span[@class='dijitTreeLabel' and text()='PO Reviews']"));
+			poReview = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='dijitTreeLabel' and text()='PO Reviews']")));
+			Thread.sleep(3000);
+			poReview.click();	
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver.manage().window().maximize();
+			WebElement poReviewNew = driver.findElement(By.xpath("//img[@src='../javascript/dojo/../../cbin/../images/New.svg']"));
+			poReviewNew = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@src='../javascript/dojo/../../cbin/../images/New.svg']")));
+			Thread.sleep(3000);
+			poReviewNew.click();
+			System.out.println("Click on + button to create new ");
+			
+		}
+		@AfterTest
+		public void QuitBrowser()
+		{
+			driver.quit();	
+		}
 	
 	
 
