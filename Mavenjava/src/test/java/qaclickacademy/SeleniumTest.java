@@ -87,6 +87,7 @@ public class SeleniumTest
 			Thread.sleep(3000);
 			poReviewNew.click();
 			System.out.println("Click on + button to create new ");
+			System.out.println("Task complete");
 			
 		}
 		@AfterTest
