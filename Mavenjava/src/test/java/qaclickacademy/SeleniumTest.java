@@ -7,7 +7,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -53,7 +55,7 @@ public class SeleniumTest
 		System.out.println("Username is entered");
 		
 		//Enter Password
-		//driver.findElement(By.id("password")).sendKeys("123");
+		driver.findElement(By.id("password")).sendKeys("123");
 		System.out.println("Password is entered");
 		
 		//Select the database
@@ -96,6 +98,33 @@ public class SeleniumTest
 			driver.quit();	
 		}
 	
-	
-
+		public static boolean arasAlertHandle(WebDriver driver1)
+		{
+			try
+			{
+				String alertText = "";
+				driver1.switchTo().defaultContent();
+				System.out.println("Default frame");
+				driver1.switchTo().frame(driver1.findElement(By.cssSelector("iframe[Class='arasDialog-iframe']")));
+				System.out.println("arasDialog-iframe");
+				WebElement alertmsg = driver1.findElement(By.id("message"));
+				alertText = alertmsg.getText();
+				if(!(alertText.isEmpty()))
+				{
+					System.out.println("Alert occur");
+					return true;
+				}
+				else
+				{
+					System.out.println("Alert not occur");
+				//driver.switchTo().alert();
+					return false;
+				}
+			}
+			catch(NoSuchElementException ex)
+			{
+				System.out.println("Alert not occur");
+				return false;
+			}
+		}
 }
