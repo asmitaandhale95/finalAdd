@@ -30,33 +30,23 @@ import testlink.api.java.client.TestLinkAPIResults;
 
 public class SeleniumTest 
 {
-	public static String APIKey = "be10a8bcee1c212d1b072dc094bb9942";
-	public static String serverUrl = "http://127.0.0.1:8666/testlink-1.9.19/lib/api/xmlrpc/v1/xmlrpc.php";
-	public static  String testlinkprojectName = "POReview";
-	public static  String testPlanName = "NewPOReviewPlan";
-	public static  String testCaseName = "PO---1";
-	public static  String buildName = "POBuild1";
+	
 	public WebDriver driver;
+	//Declare result and exceptiion variable for displaying result into testlink
+	
 		@BeforeTest
 		public void openMyBlog() throws TestLinkAPIException
 		{
-		ChromeOptions chromeOptions= new ChromeOptions();
-		//Set the path of chromt.exe 
-		chromeOptions.setBinary("C:\\Users\\user1\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
-		//Find out the location of chrome.exe :-
-		chromeOptions.addArguments("--disable-features=VizDisplayCompositor");
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-		String path = System.getProperty("user.dir");
-		System.out.println(path);
-		System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
-		
-		//Declare result and exceptiion variable for displaying result into testlink
-		String result = "";
-		String exception = "";
-		
-		try
-		{
+				ChromeOptions chromeOptions= new ChromeOptions();
+				//Set the path of chromt.exe 
+				chromeOptions.setBinary("C:\\Users\\user1\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
+				//Find out the location of chrome.exe :-
+				chromeOptions.addArguments("--disable-features=VizDisplayCompositor");
+				DesiredCapabilities capabilities = new DesiredCapabilities();
+				capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+				String path = System.getProperty("user.dir");
+				System.out.println(path);
+				System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
 				driver = new ChromeDriver(chromeOptions);
 				System.out.println("Chrome Browser window is opened");
 				driver.manage().timeouts().implicitlyWait(90,TimeUnit.SECONDS);
@@ -82,13 +72,7 @@ public class SeleniumTest
 				//Click on login button
 				driver.findElement(By.id("login.login_btn_label")).click();
 				System.out.println("Login is Successful");
-		}
-		catch(Exception e)
-		{
-					result = TestLinkAPIResults.TEST_FAILED;
-			        exception = e.getMessage();
-			        updateResult("PO---1",exception,result);
-		}
+		
   }
 		@Test
 		public void CreateNewPO() throws Exception
@@ -120,11 +104,6 @@ public class SeleniumTest
 		public void QuitBrowser()
 		{
 			driver.quit();	
-		}
-		public void updateResult(String testCaseName, String exception, String results) throws TestLinkAPIException 
-		{
-				TestLinkAPIClient testlink = new TestLinkAPIClient(APIKey,serverUrl);
-				testlink.reportTestCaseResult(testlinkprojectName, testPlanName, testCaseName, buildName, exception, results);
 		}
 		
 }
