@@ -2,9 +2,9 @@
 <classpath>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
+			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" output="target/classes" path="src/main/java">
@@ -28,5 +28,7 @@
 	<classpathentry kind="lib" path="E:/Asmita/Selenium/ProjectLibrary/selenium-3.9.1-nodeps - Copy.jar"/>
 	<classpathentry kind="lib" path="E:/Asmita/Selenium/ProjectLibrary/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/JunitJArFile/junit-4.13-beta-3.jar"/>
+	<classpathentry kind="lib" path="E:/Asmita/Selenium/Softwares/TestManagementSw/testlink-api-client-2.0.zip"/>
+	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/testlink-api-client-20091130/testlink-api-client-2.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

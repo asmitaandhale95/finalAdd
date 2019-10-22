@@ -24,11 +24,21 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import testlink.api.java.client.TestLinkAPIClient;
+import testlink.api.java.client.TestLinkAPIException;
+import testlink.api.java.client.TestLinkAPIResults;
+
 public class SeleniumTest 
 {
+	public static String APIKey = "be10a8bcee1c212d1b072dc094bb9942";
+	public static String serverUrl = "http://127.0.0.1:8666/testlink-1.9.19/lib/api/xmlrpc/v1/xmlrpc.php";
+	public static  String testlinkprojectName = "POReview";
+	public static  String testPlanName = "NewPOReviewPlan";
+	public static  String testCaseName = "PO---1";
+	public static  String buildName = "POBuild1";
 	public WebDriver driver;
 		@BeforeTest
-		public void openMyBlog()
+		public void openMyBlog() throws TestLinkAPIException
 		{
 		ChromeOptions chromeOptions= new ChromeOptions();
 		//Set the path of chromt.exe 
@@ -40,31 +50,45 @@ public class SeleniumTest
 		String path = System.getProperty("user.dir");
 		System.out.println(path);
 		System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
-		driver = new ChromeDriver(chromeOptions);
-		System.out.println("Chrome Browser window is opened");
-		driver.manage().timeouts().implicitlyWait(90,TimeUnit.SECONDS);
-		driver.manage().window().maximize();
-		String baseUrl = "http://192.168.1.12/Aras11_SP8_PCCS/Client/X-salt=std_11.0.0.6493-X/scripts/Innovator.aspx";
-		driver.get(baseUrl);
-		System.out.println("Aras URL is hit");
-		Date d =new Date();
 		
-		driver.switchTo().frame("main");
-		//Enter username
-		driver.findElement(By.id("username")).sendKeys("Flx_QDM_Admin1");
-		System.out.println("Username is entered");
+		//Declare result and exceptiion variable for displaying result into testlink
+		String result = "";
+		String exception = "";
 		
-		//Enter Password
-		driver.findElement(By.id("password")).sendKeys("123");
-		System.out.println("Password is entered");
-		
-		//Select the database
-		Select selectdb = new Select(driver.findElement(By.id("database_select")));
-		selectdb.selectByIndex(0);
-		
-		//Click on login button
-		driver.findElement(By.id("login.login_btn_label")).click();
-		System.out.println("Login is Successful");
+		try
+		{
+				driver = new ChromeDriver(chromeOptions);
+				System.out.println("Chrome Browser window is opened");
+				driver.manage().timeouts().implicitlyWait(90,TimeUnit.SECONDS);
+				driver.manage().window().maximize();
+				String baseUrl = "http://192.168.1.12/Aras11_SP8_PCCS/Client/X-salt=std_11.0.0.6493-X/scripts/Innovator.aspx";
+				driver.get(baseUrl);
+				System.out.println("Aras URL is hit");
+				Date d =new Date();
+				
+				driver.switchTo().frame("main");
+				//Enter username
+				driver.findElement(By.id("username")).sendKeys("Flx_QDM_Admin1");
+				System.out.println("Username is entered");
+				
+				//Enter Password
+				driver.findElement(By.id("password")).sendKeys("123");
+				System.out.println("Password is entered");
+				
+				//Select the database
+				Select selectdb = new Select(driver.findElement(By.id("database_select")));
+				selectdb.selectByIndex(0);
+				
+				//Click on login button
+				driver.findElement(By.id("login.login_btn_label")).click();
+				System.out.println("Login is Successful");
+		}
+		catch(Exception e)
+		{
+					result = TestLinkAPIResults.TEST_FAILED;
+			        exception = e.getMessage();
+			        updateResult("PO---1",exception,result);
+		}
   }
 		@Test
 		public void CreateNewPO() throws Exception
@@ -97,34 +121,10 @@ public class SeleniumTest
 		{
 			driver.quit();	
 		}
-	
-		public static boolean arasAlertHandle(WebDriver driver1)
+		public void updateResult(String testCaseName, String exception, String results) throws TestLinkAPIException 
 		{
-			try
-			{
-				String alertText = "";
-				driver1.switchTo().defaultContent();
-				System.out.println("Default frame");
-				driver1.switchTo().frame(driver1.findElement(By.cssSelector("iframe[Class='arasDialog-iframe']")));
-				System.out.println("arasDialog-iframe");
-				WebElement alertmsg = driver1.findElement(By.id("message"));
-				alertText = alertmsg.getText();
-				if(!(alertText.isEmpty()))
-				{
-					System.out.println("Alert occur");
-					return true;
-				}
-				else
-				{
-					System.out.println("Alert not occur");
-				//driver.switchTo().alert();
-					return false;
-				}
-			}
-			catch(NoSuchElementException ex)
-			{
-				System.out.println("Alert not occur");
-				return false;
-			}
+				TestLinkAPIClient testlink = new TestLinkAPIClient(APIKey,serverUrl);
+				testlink.reportTestCaseResult(testlinkprojectName, testPlanName, testCaseName, buildName, exception, results);
 		}
+		
 }
