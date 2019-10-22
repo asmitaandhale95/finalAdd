@@ -30,12 +30,11 @@ import testlink.api.java.client.TestLinkAPIResults;
 
 public class SeleniumTest 
 {
-	
 	public WebDriver driver;
 	//Declare result and exceptiion variable for displaying result into testlink
 	
 		@BeforeTest
-		public void openMyBlog() throws TestLinkAPIException
+		public void openMyBlog()
 		{
 				ChromeOptions chromeOptions= new ChromeOptions();
 				//Set the path of chromt.exe 
@@ -72,6 +71,7 @@ public class SeleniumTest
 				//Click on login button
 				driver.findElement(By.id("login.login_btn_label")).click();
 				System.out.println("Login is Successful");
+			
 		
   }
 		@Test
@@ -100,6 +100,7 @@ public class SeleniumTest
 			System.out.println("Task complete");
 			
 		}
+		
 		@AfterTest
 		public void QuitBrowser()
 		{
