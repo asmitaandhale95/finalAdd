@@ -5,9 +5,23 @@
     <classes>
       <class name="qaclickacademy.SeleniumTest">
         <methods>
+          <include name="CreateNewPO"/>
           <include name="openMyBlog"/>
+          <include name="QuitBrowser"/>
         </methods>
       </class> <!-- qaclickacademy.SeleniumTest -->
+      <class name="qaclickacademy.AppiumTest">
+        <methods>
+          <include name="IOSApps"/>
+          <include name="NativeAppAndroid"/>
+        </methods>
+      </class> <!-- qaclickacademy.AppiumTest -->
+      <class name="qaclickacademy.RESTAPITest">
+        <methods>
+          <include name="deleteTwitter"/>
+          <include name="postJira"/>
+        </methods>
+      </class> <!-- qaclickacademy.RESTAPITest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
