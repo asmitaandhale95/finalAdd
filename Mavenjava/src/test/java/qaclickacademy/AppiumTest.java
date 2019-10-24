@@ -4,14 +4,16 @@ import org.testng.annotations.Test;
 
 public class AppiumTest
 {
-	@Test
+	
+	@Test(priority=1)
 	public void NativeAppAndroid()
 	{
 		System.out.println("First Test from First class is executed successfully");
 	}
-	@Test
+	@Test(priority=2)
 	public void IOSApps()
 	{
 		System.out.println("Second Test from First class is executed successfully");
 	}
+
 }

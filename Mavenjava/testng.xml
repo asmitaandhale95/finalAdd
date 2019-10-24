@@ -3,9 +3,9 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="qaclickacademy.AppiumTest"/>
-      <class name="qaclickacademy.SeleniumTest"/>
-      <class name="qaclickacademy.RESTAPITest"/>
-    </classes>
+     
+     		<class name="qaclickacademy.SeleniumTest"/>
+ 			 <class name="qaclickacademy.RESTAPITest"/>
+   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

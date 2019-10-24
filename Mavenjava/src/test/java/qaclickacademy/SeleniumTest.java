@@ -1,15 +1,9 @@
 package qaclickacademy;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Before;
-import org.openqa.selenium.Alert;
+
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,27 +12,20 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import testlink.api.java.client.TestLinkAPIClient;
 import testlink.api.java.client.TestLinkAPIException;
 import testlink.api.java.client.TestLinkAPIResults;
-
 public class SeleniumTest 
 {
-	public WebDriver driver;
-	public static String APIKey = "be10a8bcee1c212d1b072dc094bb9942";
-	public static String serverUrl = "http://127.0.0.1:8666/testlink-1.9.19/lib/api/xmlrpc/v1/xmlrpc.php";
-	public static  String testlinkprojectName = "POReview";
-	public static  String testPlanName = "NewPOReviewPlan";
-	public static  String testCaseName = "PO---1";
-	public static  String buildName = "POBuild1";
-
+	
 	//Declare result and exceptiion variable for displaying result into testlink
+	
+		public static WebDriver driver;
+	
 	
 		@BeforeTest
 		public void openMyBlog() throws Exception
@@ -53,7 +40,6 @@ public class SeleniumTest
 				String path = System.getProperty("user.dir");
 				System.out.println(path);
 				System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
-				
 				
 				String result = "";
 				String exception = "";
@@ -83,18 +69,22 @@ public class SeleniumTest
 				
 				//Click on login button
 				driver.findElement(By.id("login.login_btn_label")).click();
-				System.out.println("Login is Successful");
+				System.out.println("Login is Successful");	
+				
+				//*******************************Update test case result in testlink******************************
 				result = TestLinkAPIResults.TEST_PASSED;
-				updateResult("PO---1",null,result);
+				Testlinkintegration.updateResult(Testlinkintegration.testCaseName, exception, result);
+				
+				
 				}
 				catch(Exception e)
 				{
 					result = TestLinkAPIResults.TEST_FAILED;
 			        exception = e.getMessage();
-			        updateResult("PO---1",exception,result);
+			        Testlinkintegration.updateResult(Testlinkintegration.testCaseName, exception, result);
 				}
   }
-		@Test
+		@Test(priority=0,alwaysRun=true)
 		public void CreateNewPO() throws Exception
 		{
 			WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -119,16 +109,14 @@ public class SeleniumTest
 			System.out.println("Click on + button to create new ");
 			System.out.println("Task complete");
 			
+			
 		}
 		@AfterTest
 		public void QuitBrowser()
 		{
 			driver.quit();	
 		}
-		public void updateResult(String testCaseName, String exception, String results) throws TestLinkAPIException 
-		{
-				TestLinkAPIClient testlink = new TestLinkAPIClient(APIKey,serverUrl);
-				testlink.reportTestCaseResult(testlinkprojectName, testPlanName, testCaseName, buildName, exception, results);
-		}
+		
+		
 		
 }
