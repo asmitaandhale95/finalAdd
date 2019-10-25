@@ -22,7 +22,8 @@ public class SeleniumTest
 	//Declare result and exceptiion variable for displaying result into testlink
 	
 		public static WebDriver driver;
-	
+		String result = "";
+		String exception = "";
 	
 		@BeforeTest
 		public void openMyBlog() throws Exception
@@ -38,8 +39,7 @@ public class SeleniumTest
 				System.out.println(path);
 				System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
 				
-				String result = "";
-				String exception = "";
+				
 				
 				try
 				{
@@ -70,7 +70,7 @@ public class SeleniumTest
 				
 				//*******************************Update test case result in testlink******************************
 				result = TestLinkAPIResults.TEST_PASSED;
-				//Testlinkintegration.updateResult(Testlinkintegration.testCaseName, exception, result);
+				//Testlinkintegration.updateResult(Testlinkintegration.testCaseName1, exception, result);
 				
 				
 				}
@@ -78,12 +78,14 @@ public class SeleniumTest
 				{
 					result = TestLinkAPIResults.TEST_FAILED;
 			        exception = e.getMessage();
-			      //  Testlinkintegration.updateResult(Testlinkintegration.testCaseName, exception, result);
+			        //Testlinkintegration.updateResult(Testlinkintegration.testCaseName1, exception, result);
 				}
   }
 		@Test()
 		public void CreateNewPO() throws Exception
 		{
+			try
+			{
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			//driver.manage().timeouts().implicitlyWait(40,TimeUnit.SECONDS);
 			WebElement expanded = driver.findElement(By.id("main_frameset"));
@@ -105,6 +107,16 @@ public class SeleniumTest
 			poReviewNew.click();
 			System.out.println("Click on + button to create new ");
 			System.out.println("Task complete");
+			result = TestLinkAPIResults.TEST_PASSED;
+			//Testlinkintegration.updateResult(Testlinkintegration.testCaseName2, exception, result);
+			
+			}
+			catch(Exception e)
+			{
+				result = TestLinkAPIResults.TEST_FAILED;
+		        exception = e.getMessage();
+		      //  Testlinkintegration.updateResult(Testlinkintegration.testCaseName2, exception, result);
+			}
 			
 			
 		}
