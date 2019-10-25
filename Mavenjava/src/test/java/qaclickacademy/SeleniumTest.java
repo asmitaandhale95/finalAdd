@@ -108,14 +108,13 @@ public class SeleniumTest
 			System.out.println("Click on + button to create new ");
 			System.out.println("Task complete");
 			result = TestLinkAPIResults.TEST_PASSED;
-			//Testlinkintegration.updateResult(Testlinkintegration.testCaseName2, exception, result);
-			
+			Testlinkintegration.updateResult(Testlinkintegration.testCaseName2, exception, result);
 			}
 			catch(Exception e)
 			{
 				result = TestLinkAPIResults.TEST_FAILED;
 		        exception = e.getMessage();
-		      //  Testlinkintegration.updateResult(Testlinkintegration.testCaseName2, exception, result);
+		        Testlinkintegration.updateResult(Testlinkintegration.testCaseName2, exception, result);
 			}
 			
 			

@@ -29,6 +29,6 @@
 	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/org-apache-ws-commons-util.jar"/>
 	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/xmlrpc-client-3.1.jar"/>
 	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/xmlrpc-common-3.1.jar"/>
-	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/testlink-api-client-20091130/testlink-api-client-2.0.jar"/>
+	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/testlink-api-client-20091130/testlink-api-client-2.0.jar" sourcepath="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/testlink-api-client-20091130/testlink-api-client-2.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
