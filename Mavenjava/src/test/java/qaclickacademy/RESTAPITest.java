@@ -5,12 +5,12 @@ import org.testng.annotations.Test;
 public class RESTAPITest 
 {
 	
-	@Test(priority=3)
+	@Test()
 	public void postJira()
 	{
 		System.out.println("First Test from Second Class is executed successfully");
 	}
-	@Test(priority=4)
+	@Test()
 	public void deleteTwitter()
 	{
 		System.out.println("Second Test from Second Class is executed successfully");

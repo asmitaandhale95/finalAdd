@@ -81,7 +81,7 @@ public class SeleniumTest
 			      //  Testlinkintegration.updateResult(Testlinkintegration.testCaseName, exception, result);
 				}
   }
-		@Test(priority=0,alwaysRun=true)
+		@Test()
 		public void CreateNewPO() throws Exception
 		{
 			WebDriverWait wait = new WebDriverWait(driver, 30);
