@@ -1,8 +1,5 @@
 package qaclickacademy;
 import java.util.concurrent.TimeUnit;
-
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,8 +13,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import testlink.api.java.client.TestLinkAPIClient;
-import testlink.api.java.client.TestLinkAPIException;
+
+
 import testlink.api.java.client.TestLinkAPIResults;
 public class SeleniumTest 
 {
@@ -73,7 +70,7 @@ public class SeleniumTest
 				
 				//*******************************Update test case result in testlink******************************
 				result = TestLinkAPIResults.TEST_PASSED;
-				Testlinkintegration.updateResult(Testlinkintegration.testCaseName, exception, result);
+				//Testlinkintegration.updateResult(Testlinkintegration.testCaseName, exception, result);
 				
 				
 				}
@@ -81,7 +78,7 @@ public class SeleniumTest
 				{
 					result = TestLinkAPIResults.TEST_FAILED;
 			        exception = e.getMessage();
-			        Testlinkintegration.updateResult(Testlinkintegration.testCaseName, exception, result);
+			      //  Testlinkintegration.updateResult(Testlinkintegration.testCaseName, exception, result);
 				}
   }
 		@Test(priority=0,alwaysRun=true)

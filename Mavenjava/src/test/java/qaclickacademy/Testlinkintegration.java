@@ -15,10 +15,9 @@ public class Testlinkintegration
 	public static  String testCaseName = "PO---1";
 	public static  String buildName = "POBuild1";
 
-	public static void updateResult(String testCaseName, String exception, String results) throws TestLinkAPIException 
+	public static  void updateResult(String testCaseName, String exception, String results) throws TestLinkAPIException 
 	{
 			TestLinkAPIClient testlink = new TestLinkAPIClient(APIKey,serverUrl);
 			testlink.reportTestCaseResult(testlinkprojectName, testPlanName, testCaseName, buildName, exception, results);
 	}
-	
 }
