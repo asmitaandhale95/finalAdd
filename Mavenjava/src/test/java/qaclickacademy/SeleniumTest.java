@@ -26,7 +26,7 @@ public class SeleniumTest
 		String exception = "";
 	
 		@BeforeTest
-		public void openMyBlog() throws Exception
+		public void Login() throws Exception
 		{
 				ChromeOptions chromeOptions= new ChromeOptions();
 				//Set the path of chromt.exe 
