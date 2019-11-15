@@ -36,7 +36,7 @@ public class SeleniumTest
 				DesiredCapabilities capabilities = new DesiredCapabilities();
 				capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 				String path = System.getProperty("user.dir");
-				System.out.println(path);
+				
 				System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
 				
 				
@@ -71,8 +71,6 @@ public class SeleniumTest
 				//*******************************Update test case result in testlink******************************
 				result = TestLinkAPIResults.TEST_PASSED;
 				//Testlinkintegration.updateResult(Testlinkintegration.testCaseName1, exception, result);
-				
-				
 				}
 				catch(Exception e)
 				{
@@ -123,8 +121,5 @@ public class SeleniumTest
 		public void QuitBrowser()
 		{
 			driver.quit();	
-		}
-		
-		
-		
+		}		
 }
