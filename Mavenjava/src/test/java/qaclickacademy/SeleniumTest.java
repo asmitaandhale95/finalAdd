@@ -39,8 +39,6 @@ public class SeleniumTest
 				
 				System.setProperty("webdriver.chrome.driver",path+"\\resources\\chromedriver.exe");
 				
-				
-				
 				try
 				{
 				driver = new ChromeDriver(chromeOptions);
