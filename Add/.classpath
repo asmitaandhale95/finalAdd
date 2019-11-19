@@ -8,9 +8,9 @@
 	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
+			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
@@ -25,5 +25,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/testlink-api-client-20091130/testlink-api-client-2.0.jar" sourcepath="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/testlink-api-client-20091130/testlink-api-client-2.0.jar"/>
+	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/org-apache-ws-commons-util.jar"/>
+	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/xmlrpc-client-3.1.jar"/>
+	<classpathentry kind="lib" path="E:/Asmita/Selenium/Test Management tool/Jar files/TestLinkJar/xmlrpc-common-3.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
